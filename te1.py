@@ -1,4 +1,4 @@
-import copy
+import copy,math
 
 a = [[1,2],[3,4]]
 b = a[:]    #浅拷贝
@@ -18,13 +18,12 @@ print(d[::-1])
 print(d[4:100])
 
 #给定两个浮点数，判断他的和是否为0.3
-def pd(x1,x2):
-    x3 = x1+x2
-    print(x3)
-    if x3==0.3:
-        return True    
-    else:
-        return False
+#eps = 1e-9
+def float_eq(a,b,eps = 1e-9, abs_tol = 0.0):
+    diff = abs(a-b)
+    print(a,b)
+    if diff <=eps:
+        return True
+    return diff <= eps * max(abs(a),abs(b))
 
-print(pd(0.1,0.2))
-print(pd(0.1,0.1))
+print(float_eq(1e-12,0.0))
